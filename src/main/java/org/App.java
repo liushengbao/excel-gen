@@ -23,18 +23,23 @@ import java.util.concurrent.atomic.AtomicInteger;
  * </P>
  *
  *
- * /// bat or shell : java -jar tools\excel-gen-1.0-SNAPSHOT.jar D-道具.xlsx ..//程序配置文件//
+ * /// bat or shell : java -jar tools\excel-gen-1.0-SNAPSHOT.jar D-测试配置.xlsx ..//程序配置文件//
  *
  * @author bao
  */
 public class App {
 
-
     public static void main(String[] args) {
         String filePath = args[0];
         String outDir = args[1];
+        FileUtil.checkCreateDir(outDir);
+
         String jsonDir = outDir + File.separator + "server-conf" + File.separator;
+        FileUtil.checkCreateDir(jsonDir);
+
         String luaDir = outDir + File.separator + "conf" + File.separator;
+        FileUtil.checkCreateDir(luaDir);
+
         long start = System.currentTimeMillis();
         processExcel(filePath, jsonDir, luaDir);
         LogUtil.info("处理完毕 cost:" + (System.currentTimeMillis() - start));

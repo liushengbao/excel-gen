@@ -103,5 +103,15 @@ public class FileUtil {
         list.forEach(v -> System.out.println(v.getName()));
     }
 
+    public static void checkCreateDir(String path) {
+        File jsonDirFile = new File(path);
+        if (!jsonDirFile.exists()) {
+            try {
+                jsonDirFile.mkdir();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
 
 }
